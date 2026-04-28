@@ -3,6 +3,11 @@
 #include <math.h>
 #include "logistic_regression.h"
 
+void error_handler(char* msg){
+    perror(msg);
+    return;
+}
+
 void init_zero(double *vet, int n) {
     for(int i = 0; i < n; i++) vet[i] = 0;
 }
@@ -39,6 +44,10 @@ sig = 1/ (1+np.exp(-x))
 */
 double* sigmoid(double *x, int n) {
     double* result = malloc(n * sizeof(double));
+    if(!result){
+        error_handler("Errore: errore nell'istanza di result");
+        return NULL;
+    }
     for(int i = 0; i < n; i++) result[i] = 1.0 / (1.0 + exp(-x[i]));
     return result;
 }
@@ -49,6 +58,10 @@ double* sigmoid(double *x, int n) {
 */ 
 double* predict_probs(double* X, double* weights, int n_samples, int n_features, double bias) {
     double* p = malloc(n_samples * sizeof(double));
+    if(!p){
+        error_handler("Errore: errore nell'istanza di p");
+        return NULL;
+    }
     for (int i = 0; i < n_samples; i++) {
         double sum = bias;
         for (int j = 0; j < n_features; j++) sum += X[(i * n_features) + j] * weights[j];
@@ -84,6 +97,10 @@ der = np.dot(X.T, (y_pred - y_true)) / N    #np.dot prodotto riga per colonna, n
 */
 double* dloss_dw(double* X, double* y_true, double* y_pred, int n_samples, int n_features, double* y_diff) {
     double* gradients = malloc(n_features * sizeof(double));
+    if(!gradients){
+        error_handler("Errore: errore nell'istanza di gradients");
+        return NULL;
+    }
     init_zero(gradients, n_features);
 
     for(int i = 0; i < n_samples; i++) y_diff[i] = y_pred[i] - y_true[i];

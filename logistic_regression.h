@@ -4,6 +4,7 @@
 #include <float.h>
 
 #define eps DBL_EPSILON
+#define error_instatiate -1
 
 typedef struct {
     double *X;  
@@ -12,6 +13,7 @@ typedef struct {
     int n_features; 
 } Data;
 
+void error_handler(char* msg);
 void init_zero(double *vet, int n);
 double randn();
 void split_data(Data *full_data, Data *train, Data *test, double ratio);
