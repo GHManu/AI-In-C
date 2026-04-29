@@ -29,30 +29,3 @@ Il `main` esegue una simulazione completa simile a un workflow professionale di 
 * **Accuracy Elevata:** Poiché i dati sono stati generati con una logica lineare (`dot > 0.0`), la regressione logistica dovrebbe essere in grado di raggiungere un'accuracy molto alta, spesso superiore al **90-95%**, a patto che il `learning_rate` e le epoche siano ben bilanciati.
 
 
----
-
-## ESEMPIO(per capire in generale): Diagnostica Medica (Dataset di pazienti)
-Immagina di voler classificare se un paziente è sano o malato in base a delle analisi.
-
-| Campione (Riga) | Feature 1 (Età) | Feature 2 (Pressione) | Feature 3 (Colesterolo) | Classe (Target) |
-| :--- | :--- | :--- | :--- | :--- |
-| **Paziente A** | 45 | 120 | 200 | **Sano** |
-| **Paziente B** | 67 | 150 | 240 | **Rischio Alto** |
-| **Paziente C** | 30 | 115 | 180 | **Sano** |
-
-* **Campioni:** I singoli pazienti.
-* **Features:** Età, Pressione sanguigna, Livello di colesterolo.
-* **Classe:** "Sano" o "Rischio Alto".
-
----
-
-* **Campione**: L'oggetto fisico o l'evento reale che stai analizzando (una riga).
-
-* **Feature**: Una caratteristica misurabile di quell'oggetto (l'indice di colonna).
-
-* **Classe**: La categoria a cui appartiene l'oggetto (l'etichetta target).
-
-* **sample** --> un sample (campione) è un'istanza specifica (un'osservazione).
-- i samples come le singole righe, dove ogni riga rappresenta un esperimento o un oggetto distinto. Una riga identifica un sample, quindi un vettore di features a cui viene associato una classe; 
-
-
