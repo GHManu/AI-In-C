@@ -29,3 +29,5 @@ Immagina di voler classificare se un paziente è sano o malato in base a delle a
 - Il mio modello sarà suddiviso in 2 fasi aventi diversi dataset ma nati dallo stesso dataset:
 1. TRAINING: il modello analizza questi dati per individuare pattern, relazioni e regole, ottimizzando i propri parametri interni per minimizzare gli errori.
 2. TESTING: Una volta addestrato, il modello viene utilizzato in scenari reali per fare previsioni, classificazioni o generare contenuti su dati nuovi e mai visti prima. In questa fase, il modello applica ciò che ha imparato durante l'addestramento.
+
+- COSA VUOL DIRE IN PRATICA: praticamente con nuovi sample in input, il mio modello deve saper classificare correttamente, ovvero predirre la classe a cui appartiene, ad esempio aggiungo un nuovo paziente e guardando i sintomi mi deve dire se è sano o malato.
