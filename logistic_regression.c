@@ -139,14 +139,27 @@ void fit_logistic(Data *data, double* weights, double l_rate, double* bias, int 
     double* y_pred = NULL;
     double* gradients = NULL;
     double* y_diff = malloc(sizeof(double) * data->n_samples);
+    if(!y_diff){
+        error_handler("Errore: errore nell'istanza di y_diff");
+        return ;
+    }
     for(int i = 0; i < n_epochs; i++) {
         if (y_pred) free(y_pred);
         y_pred = predict_probs(data->X, weights, data->n_samples, data->n_features, *bias);
+        if(!y_pred){
+            error_handler("Errore: errore nell'istanza di y_pred");
+            return ;
+        }
 
         double L = loss(data->y, y_pred, data->n_samples);
 
         if (gradients) free(gradients);
         gradients = dloss_dw(data->X, data->y, y_pred, data->n_samples, data->n_features, y_diff);
+
+        if(!gradients){
+            error_handler("Errore: errore nell'istanza di gradients");
+            return;
+        }
 
         for(int j = 0; j < data->n_features; j++) weights[j] -= gradients[j] * l_rate;
 
@@ -168,6 +181,10 @@ return np.round(p)
 */
 double* predict_logistic(double* X, double* weights, int n_samples, int n_features, double bias) {
     double* probs = predict_probs(X, weights, n_samples, n_features, bias);
+    if(!probs){
+        error_handler("Errore: errore nell'istanza di probs");
+        return NULL;
+    }
     double* classes = malloc(n_samples * sizeof(double));
     for (int i = 0; i < n_samples; i++) classes[i] = (probs[i] >= 0.5) ? 1.0 : 0.0;
     free(probs);
